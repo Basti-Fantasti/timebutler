@@ -3,6 +3,8 @@
 [![HACS Validation](https://github.com/Basti-Fantasti/hacs-timebutler/actions/workflows/validate.yml/badge.svg)](https://github.com/Basti-Fantasti/hacs-timebutler/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+![Timebutler Logo](logo.png)
+
 A Home Assistant custom integration for the [Timebutler](https://www.timebutler.com) time tracking platform. Provides sensors showing employee work status, absences, and availability.
 
 ## Disclaimer
