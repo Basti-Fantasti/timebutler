@@ -3,19 +3,30 @@
     "step": {
       "user": {
         "title": "Connect to Timebutler",
-        "description": "Enter your Timebutler API token.",
+        "description": "Enter your Timebutler API token. You can find this in your Timebutler account settings.",
         "data": {
           "api_token": "API Token"
         }
       }
     },
     "error": {
-      "cannot_connect": "Failed to connect",
-      "invalid_auth": "Invalid authentication",
+      "cannot_connect": "Failed to connect to Timebutler API",
+      "invalid_auth": "Invalid API token or API access has been deactivated",
       "unknown": "Unexpected error"
     },
     "abort": {
-      "already_configured": "Account is already configured"
+      "already_configured": "This Timebutler account is already configured"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Timebutler Options",
+        "description": "Configure the update interval for Timebutler data.",
+        "data": {
+          "scan_interval": "Update interval (seconds)"
+        }
+      }
     }
   }
 }
