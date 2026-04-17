@@ -3,11 +3,14 @@
   "name": "Timebutler",
   "codeowners": ["@Basti-Fantasti"],
   "config_flow": true,
+  "dependencies": [],
   "documentation": "https://github.com/Basti-Fantasti/hacs-timebutler",
   "icon": "mdi:clock-check",
   "integration_type": "service",
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/Basti-Fantasti/hacs-timebutler/issues",
-  "requirements": ["aiohttp>=3.8.0"],
+  "loggers": ["custom_components.timebutler"],
+  "requirements": [],
+  "single_config_entry": true,
   "version": "0.1.0"
 }
