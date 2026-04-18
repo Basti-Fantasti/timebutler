@@ -1,8 +1,8 @@
 # Timebutler for Home Assistant
 
-[![HACS Validation](https://github.com/Basti-Fantasti/hacs-timebutler/actions/workflows/validate.yml/badge.svg)](https://github.com/Basti-Fantasti/hacs-timebutler/actions/workflows/validate.yml)
-[![Tests](https://github.com/Basti-Fantasti/hacs-timebutler/actions/workflows/tests.yml/badge.svg)](https://github.com/Basti-Fantasti/hacs-timebutler/actions/workflows/tests.yml)
-[![Latest Release](https://img.shields.io/github/v/release/Basti-Fantasti/hacs-timebutler)](https://github.com/Basti-Fantasti/hacs-timebutler/releases)
+[![HACS Validation](https://github.com/Basti-Fantasti/timebutler/actions/workflows/validate.yml/badge.svg)](https://github.com/Basti-Fantasti/timebutler/actions/workflows/validate.yml)
+[![Tests](https://github.com/Basti-Fantasti/timebutler/actions/workflows/tests.yml/badge.svg)](https://github.com/Basti-Fantasti/timebutler/actions/workflows/tests.yml)
+[![Latest Release](https://img.shields.io/github/v/release/Basti-Fantasti/timebutler)](https://github.com/Basti-Fantasti/timebutler/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![HA 2023.1+](https://img.shields.io/badge/Home%20Assistant-2023.1%2B-blue?logo=home-assistant)](https://www.home-assistant.io)
 
@@ -34,7 +34,7 @@ Time tracking functions (start/pause/stop clock from within Home Assistant) are 
 
 1. Open HACS in Home Assistant
 2. Click the three dots menu > **Custom repositories**
-3. Add URL: `https://github.com/Basti-Fantasti/hacs-timebutler`
+3. Add URL: `https://github.com/Basti-Fantasti/timebutler`
 4. Category: **Integration**
 5. Click **Add**
 6. Search for "Timebutler" and install
@@ -106,8 +106,8 @@ Each group sensor includes a `names` attribute with the list of people.
 
 ## Support
 
-- [Report Issues](https://github.com/Basti-Fantasti/hacs-timebutler/issues)
-- [Documentation](https://github.com/Basti-Fantasti/hacs-timebutler)
+- [Report Issues](https://github.com/Basti-Fantasti/timebutler/issues)
+- [Documentation](https://github.com/Basti-Fantasti/timebutler)
 
 ## Contributing
 
