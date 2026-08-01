@@ -5,11 +5,11 @@
   "config_flow": true,
   "dependencies": [],
   "documentation": "https://github.com/Basti-Fantasti/timebutler",
-"integration_type": "service",
+  "integration_type": "service",
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/Basti-Fantasti/timebutler/issues",
   "loggers": ["custom_components.timebutler"],
   "requirements": [],
   "single_config_entry": true,
-  "version": "1.0.0"
+  "version": "1.0.1"
 }

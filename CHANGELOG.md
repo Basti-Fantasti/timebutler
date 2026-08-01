@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.1] - 2026-08-01
+
+### Changed
+- Repository renamed from `hacs-timebutler` to `timebutler`. The `documentation` and `issue_tracker` URLs in the manifest now point to the new location.
+
 ## [1.0.0] - 2026-04-18
 
 ### Added
