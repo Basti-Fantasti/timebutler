@@ -25,6 +25,7 @@ from .const import (
     MAX_SCAN_INTERVAL,
     MIN_SCAN_INTERVAL,
 )
+from .util import unique_id_from_token
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -39,6 +40,8 @@ class TimebutlerConfigFlow(ConfigFlow, domain=DOMAIN):
     """Handle a config flow for Timebutler."""
 
     VERSION = 1
+    # 1.2: unique ID is a SHA-256 hash of the token instead of a token prefix
+    MINOR_VERSION = 2
 
     async def async_step_user(
         self, user_input: dict[str, Any] | None = None
@@ -65,7 +68,9 @@ class TimebutlerConfigFlow(ConfigFlow, domain=DOMAIN):
 
             if not errors:
                 # Prevent duplicate entries
-                await self.async_set_unique_id(user_input[CONF_API_TOKEN][:16])
+                await self.async_set_unique_id(
+                    unique_id_from_token(user_input[CONF_API_TOKEN])
+                )
                 self._abort_if_unique_id_configured()
 
                 return self.async_create_entry(

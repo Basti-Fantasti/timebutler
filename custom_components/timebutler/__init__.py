@@ -14,6 +14,7 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from .api import TimebutlerApiClient, TimebutlerAuthError
 from .const import CONF_API_TOKEN, CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL, DOMAIN
 from .coordinator import TimebutlerDataUpdateCoordinator
+from .util import unique_id_from_token
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -58,6 +59,24 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
     # Register options update listener
     entry.async_on_unload(entry.add_update_listener(async_options_update_listener))
+
+    return True
+
+
+async def async_migrate_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
+    """Migrate an old config entry."""
+    if entry.version > 1:
+        # Downgrade from a future version is not supported
+        return False
+
+    if entry.minor_version < 2:
+        # Replace the token prefix unique ID with a hash of the token
+        hass.config_entries.async_update_entry(
+            entry,
+            unique_id=unique_id_from_token(entry.data[CONF_API_TOKEN]),
+            minor_version=2,
+        )
+        _LOGGER.debug("Migrated config entry to version 1.2")
 
     return True
 

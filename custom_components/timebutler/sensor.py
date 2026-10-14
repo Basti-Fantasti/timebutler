@@ -134,6 +134,8 @@ class TimebutlerUserSensor(CoordinatorEntity[TimebutlerDataUpdateCoordinator], S
             attrs["absence_type"] = status.current_absence.absence_type
             attrs["absence_start"] = status.current_absence.start_date.isoformat()
             attrs["absence_end"] = status.current_absence.end_date.isoformat()
+            attrs["absence_half_day"] = status.current_absence.half_day
+            attrs["absence_morning"] = status.current_absence.morning
 
         return attrs
 

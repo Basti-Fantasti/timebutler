@@ -1,9 +1,11 @@
 """Tests for the Timebutler config flow."""
+import hashlib
 from unittest.mock import AsyncMock, patch
 
 import pytest
 from homeassistant import config_entries
 from homeassistant.data_entry_flow import FlowResultType
+from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 from custom_components.timebutler.api import TimebutlerAuthError, TimebutlerConnectionError
 from custom_components.timebutler.const import (
@@ -132,3 +134,37 @@ async def test_options_flow_updates_scan_interval(hass):
 
     assert result["type"] == FlowResultType.CREATE_ENTRY
     assert entry.options[CONF_SCAN_INTERVAL] == new_interval
+
+
+async def test_new_entry_unique_id_is_token_hash(hass):
+    with patch(
+        "custom_components.timebutler.config_flow.TimebutlerApiClient",
+        return_value=_mock_client(valid=True),
+    ), patch("custom_components.timebutler.async_setup_entry", return_value=True):
+        result = await hass.config_entries.flow.async_init(
+            DOMAIN, context={"source": config_entries.SOURCE_USER}
+        )
+        result = await hass.config_entries.flow.async_configure(
+            result["flow_id"], {CONF_API_TOKEN: MOCK_TOKEN}
+        )
+
+    unique_id = result["result"].unique_id
+    assert unique_id == hashlib.sha256(MOCK_TOKEN.encode()).hexdigest()
+    assert MOCK_TOKEN[:16] not in unique_id
+
+
+async def test_migration_replaces_token_prefix_unique_id(hass):
+    entry = MockConfigEntry(
+        domain=DOMAIN,
+        version=1,
+        minor_version=1,
+        unique_id=MOCK_TOKEN[:16],
+        data={CONF_API_TOKEN: MOCK_TOKEN},
+    )
+    entry.add_to_hass(hass)
+
+    with patch("custom_components.timebutler.async_setup_entry", return_value=True):
+        assert await hass.config_entries.async_setup(entry.entry_id)
+
+    assert entry.unique_id == hashlib.sha256(MOCK_TOKEN.encode()).hexdigest()
+    assert entry.minor_version == 2

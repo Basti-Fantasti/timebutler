@@ -4,7 +4,7 @@
 [![Tests](https://github.com/Basti-Fantasti/timebutler/actions/workflows/tests.yml/badge.svg)](https://github.com/Basti-Fantasti/timebutler/actions/workflows/tests.yml)
 [![Latest Release](https://img.shields.io/github/v/release/Basti-Fantasti/timebutler)](https://github.com/Basti-Fantasti/timebutler/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![HA 2023.1+](https://img.shields.io/badge/Home%20Assistant-2023.1%2B-blue?logo=home-assistant)](https://www.home-assistant.io)
+[![HA 2024.12+](https://img.shields.io/badge/Home%20Assistant-2024.12%2B-blue?logo=home-assistant)](https://www.home-assistant.io)
 
 ![Timebutler Logo](logo.png)
 
@@ -89,6 +89,8 @@ Each user gets a sensor: `sensor.timebutler_<username>`
 - `absence_type` - Type of absence (if applicable)
 - `absence_start` - Start date of current absence (if applicable)
 - `absence_end` - End date of current absence (if applicable)
+- `absence_half_day` - `true` if the current absence covers half a day (if applicable)
+- `absence_morning` - `true` if a half-day absence falls in the morning (if applicable)
 
 ### Group Sensors
 
@@ -100,7 +102,7 @@ Each group sensor includes a `names` attribute with the list of people.
 
 ## Requirements
 
-- Home Assistant 2023.1 or newer
+- Home Assistant 2024.12 or newer
 - Timebutler account with API access
 - API token from Timebutler settings
 
@@ -120,4 +122,4 @@ Contributions and feature requests are welcome, but the following terms apply:
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
